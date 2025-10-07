@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - A Távola Gamer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="topo">
+    <div class="logo-nome">
+      <img src="imgs/Logo.png" alt="Logo A Távola Gamer">
+      <h1>A Távola Gamer</h1>
+    </div>
+    <div class="busca">
+      <input type="text" placeholder="Pesquisar no fórum...">
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="#">Fórum</a>
+      <a href="#">Reviews</a>
+      <a href="cadastro.html">Login/Cadastro</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <main style="width: 100%; max-width: 600px; margin: auto;">
+      <div class="postagem form-container">
+        <h2>Junte-se à Távola!</h2>
+        <p>Crie sua conta e comece a compartilhar suas aventuras com outros Cavaleiros Gamers!</p>
+        <form>
+          <div class="form-group">
+            <label for="username">Nome de Usuário</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirmar Senha</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+          </div>
+          <button type="submit" class="btn-submit">Criar Conta</button>
+        </form>
+        <p class="login-redirect">Já é um Cavaleiro? <a href="#">Faça Login aqui!</a></p>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook da Távola Gamer"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter da Távola Gamer"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram da Távola Gamer"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Discord da Távola Gamer"><i class="fab fa-discord"></i></a>
+    </div>
+    <nav>
+      <a href="sobre.html">Sobre a Távola</a>
+      <a href="#">Regras do Fórum</a>
+      <a href="#">Ajuda</a>
+      <a href="#">Contato</a>
+    </nav>
+    <p><a href="#topo" id="voltar-topo-link">⬆ Retornar ao Topo ⬆</a></p>
+    <br>
+    <p>A Távola Gamer © 2025 - Projeto Acadêmico de Front-End</p>
+    <p>Por: Luiz Fellipe Monteiro Pereira</p>
+  </footer>
+
+  <a href="#topo" id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">⬆</a>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

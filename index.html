@@ -3,217 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Távola Gamer</title>
+  <title>Início - A Távola Gamer</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    /* * CSS Básico
-     */
-
-    /* Reset básico para todos os elementos */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box; /* Garante que padding e border não aumentem a largura/altura */
-    }
-
-    /* Estilos globais para o corpo do site */
-    body {
-      font-family: 'Roboto', Arial, sans-serif; /* Fonte secundária para leitura geral */
-      background-color: #0d0d0d; /* Fundo principal: preto bem escuro */
-      color: #e0e0e0; /* Cor padrão do texto: cinza claro */
-    }
-
-    /* Estilos para títulos */
-    h1, h2, h3 {
-      font-family: 'Cinzel', serif; /* Fonte primária para títulos, com estilo épico */
-    }
-
-    /* Cabeçalho do site */
-    header {
-      background: #1a1a1a; /* Fundo preto mais escuro para o cabeçalho */
-      color: #DAA520; /* Cor dourada para elementos de destaque no cabeçalho */
-      padding: 15px 30px; /* Espaçamento interno */
-      display: flex; /* Para alinhar itens lado a lado (logo, busca, navegação) */
-      justify-content: space-between; /* Espaço igual entre os itens */
-      align-items: center; /* Alinha os itens verticalmente ao centro */
-      position: sticky; /* Fixa o cabeçalho no topo ao rolar a página */
-      top: 0; /* Começa no topo */
-      z-index: 1000; /* Garante que o cabeçalho fique por cima de outros elementos */
-      border-bottom: 2px solid #DAA520; /* Borda inferior dourada */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
-    }
-
-    .logo-nome {
-      display: flex; /* Alinha a imagem do logo e o texto do título */
-      align-items: center;
-      gap: 10px; /* Espaço entre a imagem e o texto */
-    }
-
-    .logo-nome img {
-      width: 70px; /* Largura da imagem do logo */
-      height: 70px; /* Altura da imagem do logo */
-      border-radius: 5px; /* Bordas levemente arredondadas */
-    }
-
-    .logo-nome h1 {
-      font-size: 1.8rem; /* Tamanho da fonte para o título principal */
-      color: #DAA520; /* Cor dourada para o título */
-      /* Removido text-shadow complexo para simplicidade */
-    }
-
-    /* Barra de busca */
-    .busca {
-      flex: 1; /* Permite que a barra de busca ocupe o espaço disponível */
-      margin: 0 20px; /* Margem nas laterais */
-      display: flex;
-      justify-content: center; /* Centraliza o input dentro da área de busca */
-    }
-
-    .busca input {
-      width: 70%; /* Largura do campo de busca */
-      padding: 10px 15px; /* Espaçamento interno */
-      border-radius: 20px; /* Bordas bem arredondadas */
-      border: 1px solid #444; /* Borda cinza escura */
-      background-color: #2a2a2a; /* Fundo escuro para o input */
-      color: #e0e0e0; /* Cor do texto digitado */
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4); /* Sombra interna para profundidade */
-      transition: border-color 0.3s, box-shadow 0.3s; /* Transição suave para efeitos de hover/focus */
-    }
-
-    .busca input:focus {
-      border-color: #DAA520; /* Borda dourada ao focar */
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 8px rgba(218, 165, 32, 0.5); /* Brilho dourado ao focar */
-      outline: none; /* Remove a borda padrão do navegador ao focar */
-    }
-
-    /* Navegação principal no cabeçalho */
-    nav a {
-      color: #e0e0e0; /* Cor padrão dos links */
-      text-decoration: none; /* Remove o sublinhado padrão */
-      margin: 0 12px; /* Espaçamento entre os links */
-      transition: color 0.3s; /* Transição suave de cor */
-      font-weight: 500; /* Peso da fonte */
-    }
-
-    nav a:hover {
-      color: #DAA520; /* Cor dourada ao passar o mouse */
-      /* Removido text-shadow para simplicidade */
-    }
-
-    /* Estrutura Principal do Conteúdo (Sidebar e Main) */
-    .container {
-      display: flex; /* Permite que a barra lateral e o conteúdo fiquem lado a lado */
-      padding: 20px; /* Espaçamento interno geral */
-      gap: 20px; /* Espaço entre a sidebar e o conteúdo principal */
-    }
-
-    aside {
-      width: 250px; /* Largura fixa para a barra lateral */
-      background: #1a1a1a; /* Fundo preto mais escuro */
-      padding: 20px; /* Espaçamento interno */
-      border-radius: 8px; /* Bordas arredondadas */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
-      border: 1px solid #2a2a2a; /* Borda sutil para separar */
-    }
-
-    aside h2 {
-      margin-bottom: 15px;
-      color: #DAA520; /* Dourado para o título da sidebar */
-      font-size: 1.3rem;
-      border-bottom: 1px solid rgba(218, 165, 32, 0.4); /* Linha dourada suave */
-      padding-bottom: 10px;
-      /* Removido text-shadow para simplicidade */
-    }
-
-    aside ul {
-      list-style: none; /* Remove os marcadores de lista */
-    }
-
-    aside li {
-      margin: 12px 0; /* Espaçamento entre os itens da lista */
-    }
-
-    aside a {
-      color: #e0e0e0;
-      text-decoration: none;
-      transition: color 0.3s, transform 0.3s; /* Transição para cor e movimento */
-      display: block; /* Faz o link ocupar toda a largura para o hover */
-      padding: 5px 0;
-    }
-
-    aside a:hover {
-      color: #DAA520; /* Dourado ao passar o mouse */
-      transform: translateX(5px); /* Move o item um pouco para a direita */
-    }
-
-    main {
-      flex-grow: 1; /* Ocupa o restante do espaço disponível */
-      padding: 0 20px; /* Espaçamento interno */
-    }
-
-    /* Estilo para cada postagem/tópico */
-    .postagem {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-radius: 8px;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; /* Transições suaves */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    .postagem:hover {
-      transform: translateY(-5px); /* Levanta o postagem ao passar o mouse */
-      border-color: #DAA520; /* Borda dourada no hover */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(218, 165, 32, 0.4); /* Sombra e brilho dourado */
-    }
-
-    .postagem h3 {
-      color: #DAA520; /* Dourado para o título da postagem */
-      margin-bottom: 10px;
-      font-size: 1.4rem;
-      /* Removido text-shadow para simplicidade */
-    }
-
-    .postagem p {
-      line-height: 1.6; /* Melhorar a legibilidade do texto */
-      color: #c0c0c0; /* Cinza suave para o corpo do texto */
-    }
-
-    /* Rodapé */
-    footer {
-      background: #1a1a1a;
-      color: #808080; /* Cor de texto mais discreta para o rodapé */
-      text-align: center;
-      padding: 25px;
-      margin-top: 30px;
-      border-top: 2px solid #DAA520; /* Borda superior dourada */
-      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
-    }
-
-    footer nav {
-      margin-bottom: 15px;
-    }
-
-    footer a {
-      text-decoration: none;
-      color: #DAA520; /* Dourado para os links do rodapé */
-      font-weight: bold;
-      margin: 0 12px;
-      transition: text-decoration 0.3s, color 0.3s;
-    }
-
-    footer a:hover {
-      text-decoration: underline; /* Sublinhado ao passar o mouse */
-      color: #FFD700; /* Dourado mais claro no hover */
-    }
-
-    footer p {
-        margin-top: 10px;
-        font-size: 0.9rem;
-        color: #a0a0a0; /* Cinza suave para os textos menores do rodapé */
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header id="topo">
@@ -227,10 +20,8 @@
     </div>
 
     <nav>
-      <a href="#">Início</a>
-      <a href="#">Fórum</a>
-      <a href="#">Reviews</a>
-      <a href="#">Login</a>
+      <a href="index.html">Início</a>
+      <a href="#">Fórum</a> <a href="#">Reviews</a> <a href="cadastro.html">Login/Cadastro</a>
     </nav>
   </header>
 
@@ -238,17 +29,18 @@
     <aside>
       <h2>Categorias da Távola</h2>
       <ul>
-        <li><a href="#">RPG</a></li>
-        <li><a href="#">MMORPG</a></li>
-        <li><a href="#">MOBA</a></li>
-        <li><a href="#">Indie Games</a></li>
-        <li><a href="#">FPS Competitivo</a></li>
-        <li><a href="#">Estratégia e Tática</a></li>
-        <li><a href="#">Simuladores</a></li>
-        <li><a href="#">Jogos de Luta</a></li>
-        <li><a href="#">Hardware Gamer</a></li>
-        <li><a href="#">Notícias da Indústria</a></li>
+        <li><a href="categorias.html#rpg">RPG</a></li>
+        <li><a href="categorias.html#mmo">MMORPG</a></li>
+        <li><a href="categorias.html#moba">MOBA</a></li>
+        <li><a href="categorias.html#indie">Indie Games</a></li>
+        <li><a href="categorias.html#fps">FPS Competitivo</a></li>
+        <li><a href="categorias.html#estrategia">Estratégia e Tática</a></li>
+        <li><a href="categorias.html#simuladores">Simuladores</a></li>
+        <li><a href="categorias.html#luta">Jogos de Luta</a></li>
+        <li><a href="categorias.html#hardware">Hardware Gamer</a></li>
+        <li><a href="categorias.html#noticias">Notícias da Indústria</a></li>
       </ul>
+      <p class="aside-info">Confira nosso <a href="categorias.html">Dicionário Gamer</a> para saber mais!</p>
     </aside>
 
     <main>
@@ -280,16 +72,26 @@
   </div>
 
   <footer>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook da Távola Gamer"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter da Távola Gamer"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram da Távola Gamer"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Discord da Távola Gamer"><i class="fab fa-discord"></i></a>
+    </div>
     <nav>
-      <a href="#">Sobre a Távola</a>
+      <a href="sobre.html">Sobre a Távola</a>
       <a href="#">Regras do Fórum</a>
       <a href="#">Ajuda</a>
       <a href="#">Contato</a>
     </nav>
-    <p><a href="#topo">⬆ Retornar ao Topo ⬆</a></p>
+    <p><a href="#topo" id="voltar-topo-link">⬆ Retornar ao Topo ⬆</a></p>
     <br>
     <p>A Távola Gamer © 2025 - Projeto Acadêmico de Front-End</p>
     <p>Por: Luiz Fellipe Monteiro Pereira</p>
   </footer>
+
+  <a href="#topo" id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">⬆</a>
+
+  <script src="js/script.js" defer></script>
 </body>
 </html>
