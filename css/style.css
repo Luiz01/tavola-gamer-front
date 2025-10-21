@@ -2,6 +2,41 @@
  * Desenvolvido para o primeiro período de faculdade
  */
 
+/* Variáveis CSS para cores */
+:root {
+  /* Cores Padrão (Darker Theme) */
+  --body-bg-color: #0d0d0d; /* Fundo principal */
+  --text-color: #e0e0e0; /* Cor padrão do texto */
+  --header-footer-bg-color: #1a1a1a; /* Fundo de cabeçalho e rodapé */
+  --card-bg-color: #1a1a1a; /* Fundo das postagens/cards */
+  --border-color: #2a2a2a; /* Borda sutil */
+  --accent-color: #DAA520; /* Dourado */
+  --accent-hover-color: #FFD700; /* Dourado mais claro no hover */
+  --input-bg-color: #2a2a2a; /* Fundo de inputs */
+  --input-border-color: #444; /* Borda de inputs */
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --header-shadow-color: rgba(0, 0, 0, 0.3);
+  --card-hover-shadow-color: rgba(0, 0, 0, 0.6);
+  --theme-toggle-shadow-color: rgba(218, 165, 32, 0.5);
+}
+
+/* Estilos quando a classe 'light-mode' está ativa no body */
+body.light-mode {
+  --body-bg-color: #f0f0f0; /* Fundo principal mais claro */
+  --text-color: #333; /* Cor do texto mais escura */
+  --header-footer-bg-color: #ffffff; /* Fundo branco para cabeçalho/rodapé */
+  --card-bg-color: #ffffff; /* Fundo branco para postagens/cards */
+  --border-color: #e0e0e0; /* Borda mais clara */
+  --accent-color: #8B4513; /* Marrom para destaque */
+  --accent-hover-color: #A0522D; /* Marrom mais claro no hover */
+  --input-bg-color: #f9f9f9; /* Fundo de inputs mais claro */
+  --input-border-color: #ccc; /* Borda de inputs mais clara */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --header-shadow-color: rgba(0, 0, 0, 0.1);
+  --card-hover-shadow-color: rgba(0, 0, 0, 0.3);
+  --theme-toggle-shadow-color: rgba(139, 69, 19, 0.5);
+}
+
 /* Reset básico para todos os elementos */
 * {
   margin: 0;
@@ -9,11 +44,12 @@
   box-sizing: border-box; /* Garante que padding e border não aumentem a largura/altura */
 }
 
-/* Estilos globais para o corpo do site */
+/* Estilos globais para o corpo do site usando as variáveis */
 body {
   font-family: 'Roboto', Arial, sans-serif; /* Fonte secundária para leitura geral */
-  background-color: #0d0d0d; /* Fundo principal: preto bem escuro */
-  color: #e0e0e0; /* Cor padrão do texto: cinza claro */
+  background-color: var(--body-bg-color); /* Usando variável */
+  color: var(--text-color); /* Usando variável */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 /* Estilos para títulos */
@@ -23,8 +59,8 @@ h1, h2, h3 {
 
 /* Cabeçalho do site */
 header {
-  background: #1a1a1a; /* Fundo preto mais escuro para o cabeçalho */
-  color: #DAA520; /* Cor dourada para elementos de destaque no cabeçalho */
+  background: var(--header-footer-bg-color); /* Usando variável */
+  color: var(--accent-color); /* Usando variável */
   padding: 15px 30px; /* Espaçamento interno */
   display: flex; /* Para alinhar itens lado a lado (logo, busca, navegação) */
   justify-content: space-between; /* Espaço igual entre os itens */
@@ -32,8 +68,9 @@ header {
   position: sticky; /* Fixa o cabeçalho no topo ao rolar a página */
   top: 0; /* Começa no topo */
   z-index: 1000; /* Garante que o cabeçalho fique por cima de outros elementos */
-  border-bottom: 2px solid #DAA520; /* Borda inferior dourada */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
+  border-bottom: 2px solid var(--accent-color); /* Borda inferior dourada */
+  box-shadow: 0 4px 8px var(--header-shadow-color); /* Sombra para dar profundidade */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo-nome {
@@ -50,7 +87,7 @@ header {
 
 .logo-nome h1 {
   font-size: 1.8rem; /* Tamanho da fonte para o título principal */
-  color: #DAA520; /* Cor dourada para o título */
+  color: var(--accent-color); /* Usando variável */
 }
 
 /* Barra de busca */
@@ -65,22 +102,22 @@ header {
   width: 70%; /* Largura do campo de busca */
   padding: 10px 15px; /* Espaçamento interno */
   border-radius: 20px; /* Bordas bem arredondadas */
-  border: 1px solid #444; /* Borda cinza escura */
-  background-color: #2a2a2a; /* Fundo escuro para o input */
-  color: #e0e0e0; /* Cor do texto digitado */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4); /* Sombra interna para profundidade */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Transição suave para efeitos de hover/focus */
+  border: 1px solid var(--input-border-color); /* Usando variável */
+  background-color: var(--input-bg-color); /* Usando variável */
+  color: var(--text-color); /* Usando variável */
+  box-shadow: inset 0 1px 3px var(--shadow-color); /* Sombra interna para profundidade */
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s; /* Transição suave */
 }
 
 .busca input:focus {
-  border-color: #DAA520; /* Borda dourada ao focar */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 8px rgba(218, 165, 32, 0.5); /* Brilho dourado ao focar */
+  border-color: var(--accent-color); /* Borda dourada ao focar */
+  box-shadow: inset 0 1px 3px var(--shadow-color), 0 0 8px var(--theme-toggle-shadow-color); /* Brilho dourado ao focar */
   outline: none; /* Remove a borda padrão do navegador ao focar */
 }
 
 /* Navegação principal no cabeçalho */
 nav a {
-  color: #e0e0e0; /* Cor padrão dos links */
+  color: var(--text-color); /* Usando variável */
   text-decoration: none; /* Remove o sublinhado padrão */
   margin: 0 12px; /* Espaçamento entre os links */
   transition: color 0.3s; /* Transição suave de cor */
@@ -88,8 +125,37 @@ nav a {
 }
 
 nav a:hover {
-  color: #DAA520; /* Cor dourada ao passar o mouse */
+  color: var(--accent-color); /* Usando variável */
 }
+
+/* Botão de alternância de tema */
+#theme-toggle {
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px; /* Ajuste para deixar o botão mais redondo */
+    height: 45px; /* Ajuste para deixar o botão mais redondo */
+}
+
+#theme-toggle:hover {
+    background-color: var(--accent-color);
+    color: var(--header-footer-bg-color);
+    box-shadow: 0 0 10px var(--theme-toggle-shadow-color);
+}
+/* Alinhamento dos ícones para que fiquem centrados */
+#theme-toggle i {
+    font-size: 1.1em;
+}
+
 
 /* Estrutura Principal do Conteúdo (Sidebar e Main) */
 .container {
@@ -100,19 +166,21 @@ nav a:hover {
 
 aside {
   width: 250px; /* Largura fixa para a barra lateral */
-  background: #1a1a1a; /* Fundo preto mais escuro */
+  background: var(--card-bg-color); /* Usando variável */
   padding: 20px; /* Espaçamento interno */
   border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
-  border: 1px solid #2a2a2a; /* Borda sutil para separar */
+  box-shadow: 0 2px 8px var(--shadow-color); /* Sombra para profundidade */
+  border: 1px solid var(--border-color); /* Usando variável */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 aside h2 {
   margin-bottom: 15px;
-  color: #DAA520; /* Dourado para o título da sidebar */
+  color: var(--accent-color); /* Usando variável */
   font-size: 1.3rem;
   border-bottom: 1px solid rgba(218, 165, 32, 0.4); /* Linha dourada suave */
   padding-bottom: 10px;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 aside ul {
@@ -124,7 +192,7 @@ aside li {
 }
 
 aside a {
-  color: #e0e0e0;
+  color: var(--text-color); /* Usando variável */
   text-decoration: none;
   transition: color 0.3s, transform 0.3s; /* Transição para cor e movimento */
   display: block; /* Faz o link ocupar toda a largura para o hover */
@@ -132,7 +200,7 @@ aside a {
 }
 
 aside a:hover {
-  color: #DAA520; /* Dourado ao passar o mouse */
+  color: var(--accent-color); /* Usando variável */
   transform: translateX(5px); /* Move o item um pouco para a direita */
 }
 
@@ -143,11 +211,11 @@ aside a:hover {
     text-align: center;
 }
 .aside-info a {
-    color: #DAA520;
+    color: var(--accent-color); /* Usando variável */
     text-decoration: underline;
 }
 .aside-info a:hover {
-    color: #FFD700;
+    color: var(--accent-hover-color); /* Usando variável */
 }
 
 main {
@@ -157,41 +225,44 @@ main {
 
 /* Estilo para cada postagem/tópico */
 .postagem {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
+  background: var(--card-bg-color); /* Usando variável */
+  border: 1px solid var(--border-color); /* Usando variável */
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 8px;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; /* Transições suaves */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease; /* Transições suaves */
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .postagem:hover {
   transform: translateY(-5px); /* Levanta o postagem ao passar o mouse */
-  border-color: #DAA520; /* Borda dourada no hover */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(218, 165, 32, 0.4); /* Sombra e brilho dourado */
+  border-color: var(--accent-color); /* Borda dourada no hover */
+  box-shadow: 0 5px 15px var(--card-hover-shadow-color), 0 0 10px var(--theme-toggle-shadow-color); /* Sombra e brilho dourado */
 }
 
-.postagem h3 {
-  color: #DAA520; /* Dourado para o título da postagem */
+.postagem h3, .postagem h2 {
+  color: var(--accent-color); /* Usando variável */
   margin-bottom: 10px;
   font-size: 1.4rem;
+  transition: color 0.3s ease;
 }
 
 .postagem p {
   line-height: 1.6; /* Melhorar a legibilidade do texto */
-  color: #c0c0c0; /* Cinza suave para o corpo do texto */
+  color: var(--text-color); /* Usando variável */
+  transition: color 0.3s ease;
 }
 
 /* Rodapé */
 footer {
-  background: #1a1a1a;
-  color: #808080; /* Cor de texto mais discreta para o rodapé */
+  background: var(--header-footer-bg-color); /* Usando variável */
+  color: var(--text-color); /* Usando variável */
   text-align: center;
   padding: 25px;
   margin-top: 30px;
-  border-top: 2px solid #DAA520; /* Borda superior dourada */
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
+  border-top: 2px solid var(--accent-color); /* Usando variável */
+  box-shadow: 0 -4px 8px var(--header-shadow-color); /* Sombra para profundidade */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 footer nav {
@@ -200,7 +271,7 @@ footer nav {
 
 footer a {
   text-decoration: none;
-  color: #DAA520; /* Dourado para os links do rodapé */
+  color: var(--accent-color); /* Usando variável */
   font-weight: bold;
   margin: 0 12px;
   transition: text-decoration 0.3s, color 0.3s;
@@ -208,13 +279,14 @@ footer a {
 
 footer a:hover {
   text-decoration: underline; /* Sublinhado ao passar o mouse */
-  color: #FFD700; /* Dourado mais claro no hover */
+  color: var(--accent-hover-color); /* Usando variável */
 }
 
 footer p {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: #a0a0a0; /* Cinza suave para os textos menores do rodapé */
+    color: var(--text-color); /* Usando variável */
+    transition: color 0.3s ease;
 }
 
 /* --- ESTILOS ADICIONAIS --- */
@@ -231,31 +303,33 @@ footer p {
 }
 .form-group label {
   margin-bottom: 5px;
-  color: #DAA520;
+  color: var(--accent-color); /* Usando variável */
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 .form-group input {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #444;
-  background-color: #2a2a2a;
-  color: #e0e0e0;
+  border: 1px solid var(--input-border-color); /* Usando variável */
+  background-color: var(--input-bg-color); /* Usando variável */
+  color: var(--text-color); /* Usando variável */
   font-size: 1rem;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 .btn-submit {
   padding: 12px;
-  background-color: #DAA520;
-  color: #0d0d0d;
+  background-color: var(--accent-color); /* Usando variável */
+  color: var(--header-footer-bg-color); /* Cor do texto no botão (oposto ao accent) */
   font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, color 0.3s;
 }
 .btn-submit:hover {
-  background-color: #FFD700;
+  background-color: var(--accent-hover-color); /* Usando variável */
   transform: translateY(-2px);
 }
 .login-redirect {
@@ -265,35 +339,11 @@ footer p {
     text-align: center;
 }
 .login-redirect a {
-    color: #DAA520;
+    color: var(--accent-color); /* Usando variável */
     text-decoration: underline;
 }
 .login-redirect a:hover {
-    color: #FFD700;
-}
-
-/* Estilo do Botão Voltar ao Topo Flutuante */
-#back-to-top {
-  display: none; /* Escondido por padrão */
-  position: fixed; /* Posição fixa na tela */
-  bottom: 20px;
-  right: 30px;
-  z-index: 100;
-  border: none;
-  outline: none;
-  background-color: #DAA520;
-  color: #0d0d0d;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 50%; /* Deixa o botão redondo */
-  font-size: 18px;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  transition: background-color 0.3s, transform 0.2s;
-}
-#back-to-top:hover {
-  background-color: #FFD700;
-  transform: translateY(-3px);
+    color: var(--accent-hover-color); /* Usando variável */
 }
 
 /* Estilos para Ícones de Redes Sociais no Rodapé */
@@ -301,15 +351,40 @@ footer p {
   margin-bottom: 20px;
 }
 .social-icons a {
-  color: #e0e0e0;
+  color: var(--text-color); /* Usando variável */
   font-size: 1.5rem;
   margin: 0 10px;
   transition: color 0.3s, transform 0.2s;
 }
 .social-icons a:hover {
-  color: #DAA520;
+  color: var(--accent-color); /* Usando variável */
   transform: translateY(-3px);
 }
+
+/* Estilo do Botão Voltar ao Topo Flutuante */
+#back-to-top {
+  display: none; /* ESCONDIDO POR PADRÃO. O JS vai mostrar */
+  position: fixed; /* ESSENCIAL para flutuar */
+  bottom: 20px; /* Distância do fundo */
+  right: 30px; /* Distância da direita */
+  z-index: 100; /* Garante que fique acima de outros elementos */
+  border: none;
+  outline: none;
+  background-color: var(--accent-color);
+  color: var(--body-bg-color); /* Texto do botão dourado deve ser escuro */
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%; /* Deixa o botão redondo */
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: background-color 0.3s, transform 0.2s, color 0.3s, box-shadow 0.3s;
+}
+#back-to-top:hover {
+  background-color: var(--accent-hover-color);
+  transform: translateY(-3px);
+}
+
 
 /* --- RESPONSIVIDADE (MODO MOBILE) --- */
 
@@ -339,6 +414,21 @@ footer p {
     font-size: 0.9em;
   }
 
+  /* Ajusta o botão de tema */
+  #theme-toggle {
+    margin: 0; /* Remove a margem lateral no mobile */
+    position: absolute; /* Posiciona absolutamente no cabeçalho */
+    top: 10px;
+    right: 10px;
+    width: 40px; /* Ajusta o tamanho */
+    height: 40px;
+    padding: 0; /* Remove padding */
+    font-size: 1.1rem;
+  }
+  #theme-toggle i {
+      font-size: 1em;
+  }
+
   /* Ajusta o container principal */
   .container {
     flex-direction: column; /* Empilha a sidebar e o conteúdo principal */
@@ -347,7 +437,7 @@ footer p {
   aside {
     width: 100%; /* Faz a sidebar ocupar toda a largura */
     border-right: none;
-    border-bottom: 2px solid #DAA520; /* Adiciona uma borda embaixo */
+    border-bottom: 2px solid var(--accent-color); /* Adiciona uma borda embaixo */
   }
   main {
     width: 100%;
@@ -362,7 +452,7 @@ footer p {
   .logo-nome h1 {
     font-size: 1.6rem;
   }
-  .postagem h3 {
+  .postagem h3, .postagem h2 {
     font-size: 1.2rem;
   }
 
@@ -377,5 +467,15 @@ footer p {
   footer nav a {
     font-size: 0.8em;
     margin: 0 5px;
+  }
+
+  /* Ajuste para o botão flutuante no mobile */
+  #back-to-top {
+      bottom: 15px;
+      right: 15px;
+      padding: 10px;
+      font-size: 1.1rem;
+      width: 45px;
+      height: 45px;
   }
 }
