@@ -1,7 +1,3 @@
-/* * CSS Básico para o Projeto "A Távola Gamer"
- * Desenvolvido para o primeiro período de faculdade
- */
-
 /* Variáveis CSS para cores */
 :root {
   /* Cores Padrão (Darker Theme) */
@@ -17,7 +13,11 @@
   --shadow-color: rgba(0, 0, 0, 0.4);
   --header-shadow-color: rgba(0, 0, 0, 0.3);
   --card-hover-shadow-color: rgba(0, 0, 0, 0.6);
-  --theme-toggle-shadow-color: rgba(218, 165, 32, 0.5);
+  --btn-shadow-color: rgba(218, 165, 32, 0.5); /* Sombra para botões/foco */
+
+  /* Cores para o menu/popup */
+  --modal-bg-color: rgba(0, 0, 0, 0.8); /* Fundo escuro transparente */
+  --modal-content-bg-color: #1a1a1a; /* Fundo do conteúdo do modal */
 }
 
 /* Estilos quando a classe 'light-mode' está ativa no body */
@@ -34,102 +34,106 @@ body.light-mode {
   --shadow-color: rgba(0, 0, 0, 0.2);
   --header-shadow-color: rgba(0, 0, 0, 0.1);
   --card-hover-shadow-color: rgba(0, 0, 0, 0.3);
-  --theme-toggle-shadow-color: rgba(139, 69, 19, 0.5);
+  --btn-shadow-color: rgba(139, 69, 19, 0.5); /* Sombra para botões/foco */
+
+  /* Cores para o menu/popup no modo claro */
+  --modal-bg-color: rgba(255, 255, 255, 0.8); /* Fundo claro transparente */
+  --modal-content-bg-color: #ffffff; /* Fundo do conteúdo do modal */
 }
 
 /* Reset básico para todos os elementos */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Garante que padding e border não aumentem a largura/altura */
+  box-sizing: border-box;
 }
 
 /* Estilos globais para o corpo do site usando as variáveis */
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Fonte secundária para leitura geral */
-  background-color: var(--body-bg-color); /* Usando variável */
-  color: var(--text-color); /* Usando variável */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: var(--body-bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Estilos para títulos */
 h1, h2, h3 {
-  font-family: 'Cinzel', serif; /* Fonte primária para títulos, com estilo épico */
+  font-family: 'Cinzel', serif;
 }
 
 /* Cabeçalho do site */
 header {
-  background: var(--header-footer-bg-color); /* Usando variável */
-  color: var(--accent-color); /* Usando variável */
-  padding: 15px 30px; /* Espaçamento interno */
-  display: flex; /* Para alinhar itens lado a lado (logo, busca, navegação) */
-  justify-content: space-between; /* Espaço igual entre os itens */
-  align-items: center; /* Alinha os itens verticalmente ao centro */
-  position: sticky; /* Fixa o cabeçalho no topo ao rolar a página */
-  top: 0; /* Começa no topo */
-  z-index: 1000; /* Garante que o cabeçalho fique por cima de outros elementos */
-  border-bottom: 2px solid var(--accent-color); /* Borda inferior dourada */
-  box-shadow: 0 4px 8px var(--header-shadow-color); /* Sombra para dar profundidade */
+  background: var(--header-footer-bg-color);
+  color: var(--accent-color);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--accent-color);
+  box-shadow: 0 4px 8px var(--header-shadow-color);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo-nome {
-  display: flex; /* Alinha a imagem do logo e o texto do título */
+  display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre a imagem e o texto */
+  gap: 10px;
 }
 
 .logo-nome img {
-  width: 70px; /* Largura da imagem do logo */
-  height: 70px; /* Altura da imagem do logo */
-  border-radius: 5px; /* Bordas levemente arredondadas */
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
 }
 
 .logo-nome h1 {
-  font-size: 1.8rem; /* Tamanho da fonte para o título principal */
-  color: var(--accent-color); /* Usando variável */
+  font-size: 1.8rem;
+  color: var(--accent-color);
 }
 
 /* Barra de busca */
 .busca {
-  flex: 1; /* Permite que a barra de busca ocupe o espaço disponível */
-  margin: 0 20px; /* Margem nas laterais */
+  flex: 1;
+  margin: 0 20px;
   display: flex;
-  justify-content: center; /* Centraliza o input dentro da área de busca */
+  justify-content: center;
 }
 
 .busca input {
-  width: 70%; /* Largura do campo de busca */
-  padding: 10px 15px; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas bem arredondadas */
-  border: 1px solid var(--input-border-color); /* Usando variável */
-  background-color: var(--input-bg-color); /* Usando variável */
-  color: var(--text-color); /* Usando variável */
-  box-shadow: inset 0 1px 3px var(--shadow-color); /* Sombra interna para profundidade */
-  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s; /* Transição suave */
+  width: 70%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid var(--input-border-color);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  box-shadow: inset 0 1px 3px var(--shadow-color);
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .busca input:focus {
-  border-color: var(--accent-color); /* Borda dourada ao focar */
-  box-shadow: inset 0 1px 3px var(--shadow-color), 0 0 8px var(--theme-toggle-shadow-color); /* Brilho dourado ao focar */
-  outline: none; /* Remove a borda padrão do navegador ao focar */
+  border-color: var(--accent-color);
+  box-shadow: inset 0 1px 3px var(--shadow-color), 0 0 8px var(--btn-shadow-color);
+  outline: none;
 }
 
 /* Navegação principal no cabeçalho */
 nav a {
-  color: var(--text-color); /* Usando variável */
-  text-decoration: none; /* Remove o sublinhado padrão */
-  margin: 0 12px; /* Espaçamento entre os links */
-  transition: color 0.3s; /* Transição suave de cor */
-  font-weight: 500; /* Peso da fonte */
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 12px;
+  transition: color 0.3s;
+  font-weight: 500;
 }
 
 nav a:hover {
-  color: var(--accent-color); /* Usando variável */
+  color: var(--accent-color);
 }
 
-/* Botão de alternância de tema */
-#theme-toggle {
+/* Botão de Acessibilidade no cabeçalho */
+#accessibility-toggle {
     background-color: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
@@ -142,66 +146,65 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px; /* Ajuste para deixar o botão mais redondo */
-    height: 45px; /* Ajuste para deixar o botão mais redondo */
+    width: 45px;
+    height: 45px;
 }
 
-#theme-toggle:hover {
+#accessibility-toggle:hover {
     background-color: var(--accent-color);
     color: var(--header-footer-bg-color);
-    box-shadow: 0 0 10px var(--theme-toggle-shadow-color);
+    box-shadow: 0 0 10px var(--btn-shadow-color);
 }
-/* Alinhamento dos ícones para que fiquem centrados */
-#theme-toggle i {
+#accessibility-toggle i {
     font-size: 1.1em;
 }
 
 
 /* Estrutura Principal do Conteúdo (Sidebar e Main) */
 .container {
-  display: flex; /* Permite que a barra lateral e o conteúdo fiquem lado a lado */
-  padding: 20px; /* Espaçamento interno geral */
-  gap: 20px; /* Espaço entre a sidebar e o conteúdo principal */
+  display: flex;
+  padding: 20px;
+  gap: 20px;
 }
 
 aside {
-  width: 250px; /* Largura fixa para a barra lateral */
-  background: var(--card-bg-color); /* Usando variável */
-  padding: 20px; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0 2px 8px var(--shadow-color); /* Sombra para profundidade */
-  border: 1px solid var(--border-color); /* Usando variável */
+  width: 250px;
+  background: var(--card-bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  border: 1px solid var(--border-color);
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 aside h2 {
   margin-bottom: 15px;
-  color: var(--accent-color); /* Usando variável */
+  color: var(--accent-color);
   font-size: 1.3rem;
-  border-bottom: 1px solid rgba(218, 165, 32, 0.4); /* Linha dourada suave */
+  border-bottom: 1px solid rgba(218, 165, 32, 0.4);
   padding-bottom: 10px;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 aside ul {
-  list-style: none; /* Remove os marcadores de lista */
+  list-style: none;
 }
 
 aside li {
-  margin: 12px 0; /* Espaçamento entre os itens da lista */
+  margin: 12px 0;
 }
 
 aside a {
-  color: var(--text-color); /* Usando variável */
+  color: var(--text-color);
   text-decoration: none;
-  transition: color 0.3s, transform 0.3s; /* Transição para cor e movimento */
-  display: block; /* Faz o link ocupar toda a largura para o hover */
+  transition: color 0.3s, transform 0.3s;
+  display: block;
   padding: 5px 0;
 }
 
 aside a:hover {
-  color: var(--accent-color); /* Usando variável */
-  transform: translateX(5px); /* Move o item um pouco para a direita */
+  color: var(--accent-color);
+  transform: translateX(5px);
 }
 
 .aside-info {
@@ -211,57 +214,57 @@ aside a:hover {
     text-align: center;
 }
 .aside-info a {
-    color: var(--accent-color); /* Usando variável */
+    color: var(--accent-color);
     text-decoration: underline;
 }
 .aside-info a:hover {
-    color: var(--accent-hover-color); /* Usando variável */
+    color: var(--accent-hover-color);
 }
 
 main {
-  flex-grow: 1; /* Ocupa o restante do espaço disponível */
-  padding: 0 20px; /* Espaçamento interno */
+  flex-grow: 1;
+  padding: 0 20px;
 }
 
 /* Estilo para cada postagem/tópico */
 .postagem {
-  background: var(--card-bg-color); /* Usando variável */
-  border: 1px solid var(--border-color); /* Usando variável */
+  background: var(--card-bg-color);
+  border: 1px solid var(--border-color);
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 8px;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease; /* Transições suaves */
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background-color 0.3s ease;
   box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .postagem:hover {
-  transform: translateY(-5px); /* Levanta o postagem ao passar o mouse */
-  border-color: var(--accent-color); /* Borda dourada no hover */
-  box-shadow: 0 5px 15px var(--card-hover-shadow-color), 0 0 10px var(--theme-toggle-shadow-color); /* Sombra e brilho dourado */
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 5px 15px var(--card-hover-shadow-color), 0 0 10px var(--btn-shadow-color);
 }
 
 .postagem h3, .postagem h2 {
-  color: var(--accent-color); /* Usando variável */
+  color: var(--accent-color);
   margin-bottom: 10px;
   font-size: 1.4rem;
   transition: color 0.3s ease;
 }
 
 .postagem p {
-  line-height: 1.6; /* Melhorar a legibilidade do texto */
-  color: var(--text-color); /* Usando variável */
+  line-height: 1.6;
+  color: var(--text-color);
   transition: color 0.3s ease;
 }
 
 /* Rodapé */
 footer {
-  background: var(--header-footer-bg-color); /* Usando variável */
-  color: var(--text-color); /* Usando variável */
+  background: var(--header-footer-bg-color);
+  color: var(--text-color);
   text-align: center;
   padding: 25px;
   margin-top: 30px;
-  border-top: 2px solid var(--accent-color); /* Usando variável */
-  box-shadow: 0 -4px 8px var(--header-shadow-color); /* Sombra para profundidade */
+  border-top: 2px solid var(--accent-color);
+  box-shadow: 0 -4px 8px var(--header-shadow-color);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -271,21 +274,21 @@ footer nav {
 
 footer a {
   text-decoration: none;
-  color: var(--accent-color); /* Usando variável */
+  color: var(--accent-color);
   font-weight: bold;
   margin: 0 12px;
   transition: text-decoration 0.3s, color 0.3s;
 }
 
 footer a:hover {
-  text-decoration: underline; /* Sublinhado ao passar o mouse */
-  color: var(--accent-hover-color); /* Usando variável */
+  text-decoration: underline;
+  color: var(--accent-hover-color);
 }
 
 footer p {
     margin-top: 10px;
     font-size: 0.9rem;
-    color: var(--text-color); /* Usando variável */
+    color: var(--text-color);
     transition: color 0.3s ease;
 }
 
@@ -303,23 +306,23 @@ footer p {
 }
 .form-group label {
   margin-bottom: 5px;
-  color: var(--accent-color); /* Usando variável */
+  color: var(--accent-color);
   font-weight: bold;
   transition: color 0.3s ease;
 }
 .form-group input {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid var(--input-border-color); /* Usando variável */
-  background-color: var(--input-bg-color); /* Usando variável */
-  color: var(--text-color); /* Usando variável */
+  border: 1px solid var(--input-border-color);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
   font-size: 1rem;
   transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 .btn-submit {
   padding: 12px;
-  background-color: var(--accent-color); /* Usando variável */
-  color: var(--header-footer-bg-color); /* Cor do texto no botão (oposto ao accent) */
+  background-color: var(--accent-color);
+  color: var(--body-bg-color);
   font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   font-weight: bold;
@@ -329,7 +332,7 @@ footer p {
   transition: background-color 0.3s, transform 0.2s, color 0.3s;
 }
 .btn-submit:hover {
-  background-color: var(--accent-hover-color); /* Usando variável */
+  background-color: var(--accent-hover-color);
   transform: translateY(-2px);
 }
 .login-redirect {
@@ -339,11 +342,11 @@ footer p {
     text-align: center;
 }
 .login-redirect a {
-    color: var(--accent-color); /* Usando variável */
+    color: var(--accent-color);
     text-decoration: underline;
 }
 .login-redirect a:hover {
-    color: var(--accent-hover-color); /* Usando variável */
+    color: var(--accent-hover-color);
 }
 
 /* Estilos para Ícones de Redes Sociais no Rodapé */
@@ -351,48 +354,138 @@ footer p {
   margin-bottom: 20px;
 }
 .social-icons a {
-  color: var(--text-color); /* Usando variável */
+  color: var(--text-color);
   font-size: 1.5rem;
   margin: 0 10px;
   transition: color 0.3s, transform 0.2s;
 }
 .social-icons a:hover {
-  color: var(--accent-color); /* Usando variável */
+  color: var(--accent-color);
   transform: translateY(-3px);
 }
 
-/* Estilo do Botão Voltar ao Topo Flutuante */
-#back-to-top {
-  display: none; /* ESCONDIDO POR PADRÃO. O JS vai mostrar */
-  position: fixed; /* ESSENCIAL para flutuar */
-  bottom: 20px; /* Distância do fundo */
-  right: 30px; /* Distância da direita */
-  z-index: 100; /* Garante que fique acima de outros elementos */
-  border: none;
-  outline: none;
-  background-color: var(--accent-color);
-  color: var(--body-bg-color); /* Texto do botão dourado deve ser escuro */
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 50%; /* Deixa o botão redondo */
-  font-size: 18px;
-  text-decoration: none;
-  box-shadow: 0 4px 8px var(--shadow-color);
-  transition: background-color 0.3s, transform 0.2s, color 0.3s, box-shadow 0.3s;
+
+/* --- ESTILOS PARA O MENU DE ACESSIBILIDADE (MODAL) --- */
+.accessibility-menu, .welcome-message {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-bg-color);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: background-color 0.3s ease;
 }
-#back-to-top:hover {
-  background-color: var(--accent-hover-color);
-  transform: translateY(-3px);
+
+.accessibility-menu.active, .welcome-message.active {
+    display: flex;
+}
+
+.accessibility-content, .welcome-content {
+    background-color: var(--modal-content-bg-color);
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px var(--card-hover-shadow-color);
+    position: relative;
+    color: var(--text-color);
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.accessibility-content h2, .welcome-content h3 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+}
+.welcome-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+.welcome-content p i {
+    color: var(--accent-color);
+}
+
+.close-btn {
+    color: var(--text-color);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--accent-hover-color);
+    text-decoration: none;
+}
+
+.accessibility-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.accessibility-option:last-of-type {
+    border-bottom: none;
+}
+.accessibility-option span {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.btn-acessibilidade {
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--body-bg-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, transform 0.2s, color 0.3s;
+}
+.btn-acessibilidade:hover {
+    background-color: var(--accent-hover-color);
+    transform: translateY(-2px);
+}
+.btn-acessibilidade i {
+    font-size: 1.1em;
+}
+
+.menu-info {
+    font-size: 0.85em;
+    color: #a0a0a0;
+    margin-top: 20px;
 }
 
 
 /* --- RESPONSIVIDADE (MODO MOBILE) --- */
 
-/* Para telas com largura máxima de 768px (tablets e celulares) */
 @media (max-width: 768px) {
   /* Ajusta o cabeçalho para o modo mobile */
   header {
-    flex-direction: column; /* Empilha os itens verticalmente */
+    flex-direction: column;
     gap: 15px;
     padding: 15px;
   }
@@ -404,40 +497,40 @@ footer p {
     width: 90%;
   }
   nav {
-    display: flex; /* Para alinhar os links da nav */
-    flex-wrap: wrap; /* Permite que os links quebrem linha */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px; /* Espaçamento entre os itens */
+    gap: 10px;
   }
   nav a {
-    margin: 0 5px; /* Diminui o espaçamento dos links */
+    margin: 0 5px;
     font-size: 0.9em;
   }
 
   /* Ajusta o botão de tema */
-  #theme-toggle {
-    margin: 0; /* Remove a margem lateral no mobile */
-    position: absolute; /* Posiciona absolutamente no cabeçalho */
+  #accessibility-toggle {
+    margin: 0;
+    position: absolute;
     top: 10px;
     right: 10px;
-    width: 40px; /* Ajusta o tamanho */
+    width: 40px;
     height: 40px;
-    padding: 0; /* Remove padding */
+    padding: 0;
     font-size: 1.1rem;
   }
-  #theme-toggle i {
+  #accessibility-toggle i {
       font-size: 1em;
   }
 
   /* Ajusta o container principal */
   .container {
-    flex-direction: column; /* Empilha a sidebar e o conteúdo principal */
+    flex-direction: column;
     padding: 10px;
   }
   aside {
-    width: 100%; /* Faz a sidebar ocupar toda a largura */
+    width: 100%;
     border-right: none;
-    border-bottom: 2px solid var(--accent-color); /* Adiciona uma borda embaixo */
+    border-bottom: 2px solid var(--accent-color);
   }
   main {
     width: 100%;
@@ -469,13 +562,21 @@ footer p {
     margin: 0 5px;
   }
 
-  /* Ajuste para o botão flutuante no mobile */
-  #back-to-top {
-      bottom: 15px;
+  /* Ajuste para o menu de acessibilidade no mobile */
+  .accessibility-content, .welcome-content {
+      margin: 10% auto;
+      padding: 20px;
+      max-width: 95%;
+  }
+  .accessibility-content h2, .welcome-content h3 {
+      font-size: 1.5rem;
+  }
+  .welcome-content p {
+      font-size: 1rem;
+  }
+  .close-btn {
+      font-size: 1.5rem;
+      top: 10px;
       right: 15px;
-      padding: 10px;
-      font-size: 1.1rem;
-      width: 45px;
-      height: 45px;
   }
 }

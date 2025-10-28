@@ -23,8 +23,8 @@
       <a href="#">Reviews</a>
       <a href="cadastro.html">Login/Cadastro</a>
     </nav>
-    <button id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
-        <i class="fas fa-moon"></i>
+    <button id="accessibility-toggle" aria-label="Abrir menu de acessibilidade" title="Acessibilidade">
+        <i class="fas fa-universal-access"></i>
     </button>
   </header>
 
@@ -62,7 +62,29 @@
     <p>Por: Luiz Fellipe Monteiro Pereira</p>
   </footer>
 
-  <a href="#topo" id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">⬆</a>
+  <div id="accessibility-menu" class="accessibility-menu">
+      <div class="accessibility-content">
+          <button class="close-btn" aria-label="Fechar menu de acessibilidade" title="Fechar">
+              <i class="fas fa-times"></i>
+          </button>
+          <h2>Opções de Acessibilidade</h2>
+          <div class="accessibility-option">
+              <span>Modo de Tema:</span>
+              <button id="theme-toggle-menu" class="btn-acessibilidade" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+                  <i class="fas fa-moon"></i> Modo Escuro
+              </button>
+          </div>
+          <p class="menu-info">Suas preferências de tema são salvas para sua próxima visita.</p>
+      </div>
+  </div>
+
+  <div id="welcome-message" class="welcome-message">
+      <div class="welcome-content">
+          <h3>Bem-vindo(a) à Távola Gamer!</h3>
+          <p>Para opções de acessibilidade, incluindo alternância de tema, clique no <i class="fas fa-universal-access"></i> ícone no canto superior direito.</p>
+          <button id="close-welcome" class="btn-submit">Entendi!</button>
+      </div>
+  </div>
 
   <script src="js/script.js" defer></script>
 </body>
