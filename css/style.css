@@ -1,44 +1,56 @@
 /* Variáveis CSS para cores */
 :root {
   /* Cores Padrão (Darker Theme) */
-  --body-bg-color: #0d0d0d; /* Fundo principal */
-  --text-color: #e0e0e0; /* Cor padrão do texto */
-  --header-footer-bg-color: #1a1a1a; /* Fundo de cabeçalho e rodapé */
-  --card-bg-color: #1a1a1a; /* Fundo das postagens/cards */
-  --border-color: #2a2a2a; /* Borda sutil */
-  --accent-color: #DAA520; /* Dourado */
-  --accent-hover-color: #FFD700; /* Dourado mais claro no hover */
-  --input-bg-color: #2a2a2a; /* Fundo de inputs */
-  --input-border-color: #444; /* Borda de inputs */
+  --body-bg-color: #0d0d0d;
+  --text-color: #e0e0e0;
+  --header-footer-bg-color: #1a1a1a;
+  --card-bg-color: #1a1a1a;
+  --border-color: #2a2a2a;
+  --accent-color: #DAA520;
+  --accent-hover-color: #FFD700;
+  --input-bg-color: #2a2a2a;
+  --input-border-color: #444;
   --shadow-color: rgba(0, 0, 0, 0.4);
   --header-shadow-color: rgba(0, 0, 0, 0.3);
   --card-hover-shadow-color: rgba(0, 0, 0, 0.6);
-  --btn-shadow-color: rgba(218, 165, 32, 0.5); /* Sombra para botões/foco */
+  --btn-shadow-color: rgba(218, 165, 32, 0.5);
 
   /* Cores para o menu/popup */
-  --modal-bg-color: rgba(0, 0, 0, 0.8); /* Fundo escuro transparente */
-  --modal-content-bg-color: #1a1a1a; /* Fundo do conteúdo do modal */
+  --modal-bg-color: rgba(0, 0, 0, 0.8);
+  --modal-content-bg-color: #1a1a1a;
+  
+  /* Cores de Validação */
+  --error-color: #e74c3c;
+  --error-bg-color: rgba(231, 76, 60, 0.1);
+  --success-color: #2ecc71;
+  --success-bg-color: rgba(46, 204, 113, 0.1);
 }
 
 /* Estilos quando a classe 'light-mode' está ativa no body */
 body.light-mode {
-  --body-bg-color: #f0f0f0; /* Fundo principal mais claro */
-  --text-color: #333; /* Cor do texto mais escura */
-  --header-footer-bg-color: #ffffff; /* Fundo branco para cabeçalho/rodapé */
-  --card-bg-color: #ffffff; /* Fundo branco para postagens/cards */
-  --border-color: #e0e0e0; /* Borda mais clara */
-  --accent-color: #8B4513; /* Marrom para destaque */
-  --accent-hover-color: #A0522D; /* Marrom mais claro no hover */
-  --input-bg-color: #f9f9f9; /* Fundo de inputs mais claro */
-  --input-border-color: #ccc; /* Borda de inputs mais clara */
+  --body-bg-color: #f0f0f0;
+  --text-color: #333;
+  --header-footer-bg-color: #ffffff;
+  --card-bg-color: #ffffff;
+  --border-color: #e0e0e0;
+  --accent-color: #8B4513;
+  --accent-hover-color: #A0522D;
+  --input-bg-color: #f9f9f9;
+  --input-border-color: #ccc;
   --shadow-color: rgba(0, 0, 0, 0.2);
   --header-shadow-color: rgba(0, 0, 0, 0.1);
   --card-hover-shadow-color: rgba(0, 0, 0, 0.3);
-  --btn-shadow-color: rgba(139, 69, 19, 0.5); /* Sombra para botões/foco */
+  --btn-shadow-color: rgba(139, 69, 19, 0.5);
 
   /* Cores para o menu/popup no modo claro */
-  --modal-bg-color: rgba(255, 255, 255, 0.8); /* Fundo claro transparente */
-  --modal-content-bg-color: #ffffff; /* Fundo do conteúdo do modal */
+  --modal-bg-color: rgba(255, 255, 255, 0.8);
+  --modal-content-bg-color: #ffffff;
+  
+  /* Cores de Validação (são as mesmas, mas podem ser ajustadas) */
+  --error-color: #c0392b;
+  --error-bg-color: rgba(231, 76, 60, 0.1);
+  --success-color: #27ae60;
+  --success-bg-color: rgba(46, 204, 113, 0.1);
 }
 
 /* Reset básico para todos os elementos */
@@ -347,6 +359,27 @@ footer p {
 }
 .login-redirect a:hover {
     color: var(--accent-hover-color);
+}
+
+/* --- NOVO: ESTILOS DE VALIDAÇÃO DE FORMULÁRIO --- */
+#form-message {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  display: none; /* Começa escondido */
+}
+#form-message.error {
+  color: var(--error-color);
+  background-color: var(--error-bg-color);
+  border: 1px solid var(--error-color);
+  display: block; /* Mostra quando tem a classe 'error' */
+}
+#form-message.success {
+  color: var(--success-color);
+  background-color: var(--success-bg-color);
+  border: 1px solid var(--success-color);
+  display: block; /* Mostra quando tem a classe 'success' */
 }
 
 /* Estilos para Ícones de Redes Sociais no Rodapé */

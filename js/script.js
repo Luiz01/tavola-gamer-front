@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  // --- DARK MODE / LIGHT MODE TOGGLE (AGORA DENTRO DO MENU DE ACESSIBILIDADE) ---
+  // --- DARK MODE / LIGHT MODE TOGGLE (DENTRO DO MENU DE ACESSIBILIDADE) ---
   const themeToggleMenuBtn = document.getElementById('theme-toggle-menu');
   const body = document.body;
 
-  // Função para atualizar o ícone e texto do botão de tema no menu
   function updateThemeToggleButton() {
     if (!themeToggleMenuBtn) return;
     const icon = themeToggleMenuBtn.querySelector('i');
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Carrega a preferência de tema (salva ou do sistema)
   function loadThemePreference() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light-mode') {
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateThemeToggleButton();
   }
 
-  // Alterna o tema ao clicar no botão dentro do menu
   if (themeToggleMenuBtn) {
     themeToggleMenuBtn.addEventListener('click', function() {
       if (body.classList.contains('light-mode')) {
@@ -64,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Fecha o menu se clicar fora do conteúdo (overlay)
     accessibilityMenu.addEventListener('click', function(e) {
       if (e.target === accessibilityMenu) {
         accessibilityMenu.classList.remove('active');
@@ -78,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const welcomeMessage = document.getElementById('welcome-message');
   const closeWelcomeBtn = document.getElementById('close-welcome');
 
-  // Mostra o popup apenas na primeira visita (ou se não foi fechado antes)
   function showWelcomeMessage() {
     if (welcomeMessage && !localStorage.getItem('welcomeMessageClosed')) {
       welcomeMessage.classList.add('active');
@@ -95,7 +90,77 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  // --- INICIALIZAÇÃO ---
+  // --- NOVO: LÓGICA DE VALIDAÇÃO DO FORMULÁRIO DE CADASTRO ---
+  
+  // Seleciona o formulário de registro
+  const registrationForm = document.getElementById('registration-form');
+
+  // Este 'if' garante que o código a seguir SÓ tente rodar se
+  // estivermos na página que contém o formulário (cadastro.html)
+  if (registrationForm) {
+    
+    // Seleciona os campos e a área de mensagem
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const messageContainer = document.getElementById('form-message');
+
+    // Adiciona um "escutador" para o evento de 'submit' (envio) do formulário
+    registrationForm.addEventListener('submit', function(e) {
+      // 1. Previne o envio padrão do formulário (que recarregaria a página)
+      e.preventDefault(); 
+      
+      // Reseta qualquer mensagem anterior
+      messageContainer.textContent = '';
+      messageContainer.className = '';
+
+      // 2. Realiza as validações
+      
+      // Validação de E-mail
+      if (!isValidEmail(email.value)) {
+        showMessage('Por favor, insira um e-mail válido (ex: seuemail@dominio.com).', 'error');
+        return; // Para a execução se o e-mail for inválido
+      }
+      
+      // Validação de Senha Mínima (Exemplo: 6 caracteres)
+      if (password.value.length < 6) {
+        showMessage('A senha deve ter pelo menos 6 caracteres.', 'error');
+        return; 
+      }
+
+      // Validação de Senhas Iguais
+      if (password.value !== confirmPassword.value) {
+        showMessage('As senhas não coincidem. Tente novamente.', 'error');
+        return; // Para a execução se as senhas não baterem
+      }
+
+      // 3. Se tudo estiver correto
+      showMessage('Cadastro realizado com sucesso! (Simulação)', 'success');
+      // Em um projeto real, aqui você enviaria os dados para um backend.
+      // registrationForm.submit(); // Descomente esta linha se quiser que o form seja enviado de verdade
+    });
+
+    // Função para mostrar mensagens de erro ou sucesso
+    function showMessage(message, type) {
+      messageContainer.textContent = message;
+      if (type === 'error') {
+        messageContainer.className = 'error';
+      } else {
+        messageContainer.className = 'success';
+      }
+    }
+
+    // Função de verificação de e-mail (básica)
+    function isValidEmail(email) {
+      // Esta é uma Expressão Regular (Regex) simples para validar e-mails.
+      // Ela verifica se o texto tem o formato: [algo]@[algo].[algo]
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  }
+
+
+  // --- INICIALIZAÇÃO (Roda quando a página carrega) ---
   loadThemePreference();
   showWelcomeMessage();
 
